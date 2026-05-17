@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLean UFSC | Visita Técnica Malwee</title>
+    
+    <!-- Configuração de Fontes e Tailwind -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        malwee: { // Substituído por tons de AZUL conforme solicitado na nova paleta
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb', // Azul vibrante principal
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a', // Azul escuro
+                        },
+                        ufsc: {
+                            blue: '#003366'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #003366 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #003366; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased selection:bg-malwee-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-gray-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-4">
+                    <div class="text-2xl font-bold text-ufsc-blue tracking-tight">G<span class="text-malwee-600">Lean</span></div>
+                    <div class="h-6 w-px bg-gray-300"></div>
+                    <div class="text-xl font-bold text-gray-800">UFSC</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#sobre" class="text-gray-600 hover:text-malwee-600 font-medium transition-colors">Sobre a Malwee</a>
+                    <a href="#video" class="text-gray-600 hover:text-malwee-600 font-medium transition-colors">Alinhamento</a>
+                    <a href="#cronograma" class="text-gray-600 hover:text-malwee-600 font-medium transition-colors">Cronograma</a>
+                    <a href="#faq" class="text-gray-600 hover:text-malwee-600 font-medium transition-colors">Dúvidas</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+        <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(#2563eb 1px, transparent 1px); background-size: 32px 32px;"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="inline-block py-1 px-3 rounded-full bg-malwee-100 text-malwee-800 text-sm font-semibold tracking-wide mb-4 border border-malwee-200">
+                    <i class="fa-regular fa-calendar-check mr-2"></i>22 de Maio de 2026
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-gray-900">
+                    Visita Técnica <br>
+                    <span class="gradient-text">Grupo Malwee</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                    Preparação e onboarding exclusivo para os membros do GLean UFSC. Conheça uma das empresas mais sustentáveis e eficientes da moda brasileira em Jaraguá do Sul.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#cronograma" class="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-malwee-600 hover:bg-malwee-700 shadow-lg shadow-malwee-500/30 transition-all hover:-translate-y-1">
+                        Ver Roteiro da Viagem
+                    </a>
+                    <a href="#video" class="inline-flex justify-center items-center px-6 py-3 border-2 border-gray-200 text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 transition-all">
+                        Assistir Alinhamento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 1: História (Timeline Horizontal) -->
+    <div class="bg-gray-50 py-10 text-center border-t border-gray-200">
+        <h2 class="text-4xl font-bold text-gray-900 mb-2">História da Malwee</h2>
+        <p class="text-gray-600">Role a página para viajar no tempo</p>
+    </div>
+    
+    <section id="historia-wrapper" class="relative bg-gray-50" style="height: 400vh;">
+        <!-- Container Sticky que fica preso na tela enquanto o wrapper é scrollado -->
+        <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+            
+            <!-- Linha decorativa de fundo da timeline -->
+            <div class="absolute top-1/2 left-0 w-full h-1 bg-blue-200 -translate-y-1/2 z-0"></div>
+
+            <!-- Container Flex que vai se mover na horizontal -->
+            <div id="historia-container" class="flex gap-16 px-10 md:px-[10vw] w-max transition-transform duration-75 ease-out relative z-10 items-center">
+                
+                <!-- Card 1 -->
+                <div class="w-[80vw] md:w-[40vw] flex-shrink-0 bg-white rounded-2xl shadow-xl p-6 border border-blue-100 relative mt-16">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-8 h-8 bg-malwee-600 rounded-full border-4 border-white shadow-md"></div>
+                    <span class="text-malwee-600 font-black text-4xl block mb-4">1968</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">A Fundação</h3>
+                    <img src="https://placehold.co/600x400/eff6ff/1e3a8a?text=Foto+Antiga+Fundação" alt="Fundação Malwee" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-gray-600 text-lg">Fundada por Wolfgang Weege em Jaraguá do Sul (SC). O que começou como uma pequena estrutura logo demonstraria seu potencial de expansão.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="w-[80vw] md:w-[40vw] flex-shrink-0 bg-white rounded-2xl shadow-xl p-6 border border-blue-100 relative mb-16">
+                    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-8 h-8 bg-malwee-600 rounded-full border-4 border-white shadow-md"></div>
+                    <span class="text-malwee-600 font-black text-4xl block mb-4">Anos 80 e 90</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Expansão e Verticalização</h3>
+                    <img src="https://placehold.co/600x400/dbeafe/1d4ed8?text=Foto+Expansão+Fábrica" alt="Expansão Malwee" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-gray-600 text-lg">A empresa começa a verticalizar agressivamente seus processos, integrando desde a fiação até a costura, garantindo qualidade e fluxo contínuo.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="w-[80vw] md:w-[40vw] flex-shrink-0 bg-white rounded-2xl shadow-xl p-6 border border-blue-100 relative mt-16">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-8 h-8 bg-malwee-600 rounded-full border-4 border-white shadow-md"></div>
+                    <span class="text-malwee-600 font-black text-4xl block mb-4">Anos 2000</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Foco em Sustentabilidade</h3>
+                    <img src="https://placehold.co/600x400/bfdbfe/1e40af?text=Foto+Ações+Ambientais" alt="Sustentabilidade" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-gray-600 text-lg">Pioneirismo no tratamento de efluentes e conservação ambiental com a consolidação do Parque Malwee, integrando indústria e natureza.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="w-[80vw] md:w-[40vw] flex-shrink-0 bg-white rounded-2xl shadow-xl p-6 border border-blue-100 relative mb-16">
+                    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 w-8 h-8 bg-malwee-600 rounded-full border-4 border-white shadow-md"></div>
+                    <span class="text-malwee-600 font-black text-4xl block mb-4">Atualmente</span>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Moda e Tecnologia</h3>
+                    <img src="https://placehold.co/600x400/93c5fd/1e3a8a?text=Foto+Fábrica+Moderna" alt="Malwee Atual" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <p class="text-gray-600 text-lg">Um dos maiores grupos de moda do Brasil, aplicando Lean Manufacturing de ponta para lidar com alta complexidade de portfólio de forma sustentável.</p>
+                </div>
+
+                <!-- Espaçador final para garantir que o último card possa ficar centralizado na tela -->
+                <div class="w-[10vw] flex-shrink-0"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 2: Resultados e Sustentabilidade -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://placehold.co/800x600/eff6ff/2563eb?text=Infográfico+Resultados+ESG" alt="Resultados e Sustentabilidade" class="rounded-2xl shadow-lg w-full object-cover">
+                </div>
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="inline-flex items-center justify-center p-3 bg-malwee-100 rounded-xl text-malwee-600 mb-2">
+                        <i class="fa-solid fa-leaf text-2xl"></i>
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-900">Resultados e Sustentabilidade</h2>
+                    <p class="text-xl text-gray-600 leading-relaxed">
+                        Pioneira em moda sustentável no Brasil, a Malwee possui metas agressivas de ESG (Environmental, Social, and Governance).
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check-circle text-malwee-500 mt-1 mr-3 text-xl"></i>
+                            <span class="text-gray-700 text-lg"><strong>Lab Malwee Jeans:</strong> Redução de até 98% no consumo de água na lavanderia, utilizando tecnologias inovadoras.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check-circle text-malwee-500 mt-1 mr-3 text-xl"></i>
+                            <span class="text-gray-700 text-lg"><strong>Emissões:</strong> Compromisso assinado globalmente para redução drástica das emissões de Gases de Efeito Estufa (GEE).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-check-circle text-malwee-500 mt-1 mr-3 text-xl"></i>
+                            <span class="text-gray-700 text-lg"><strong>Economia Circular:</strong> Foco no desenvolvimento de roupas duráveis e processos de reciclagem têxtil.</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="pt-4">
+                        <a href="https://grupomalwee.com.br/sustentabilidade/" target="_blank" class="inline-flex items-center px-5 py-3 rounded-xl bg-malwee-50 text-malwee-700 font-semibold hover:bg-malwee-100 transition-colors border border-malwee-200 shadow-sm">
+                            <i class="fa-solid fa-award text-malwee-500 mr-2 text-xl"></i> Ver Prêmios e Relatório de Sustentabilidade <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 4: Aplicação de Lean na Malwee -->
+    <section class="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="inline-flex items-center justify-center p-3 bg-malwee-100 rounded-xl text-malwee-600 mb-4">
+                    <i class="fa-solid fa-gears text-3xl"></i>
+                </div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">A Aplicação do Lean</h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Como o GLean, nosso foco principal na visita será observar como eles gerenciam a complexidade através da filosofia de melhoria contínua.
+                </p>
+            </div>
+            
+            <img src="https://placehold.co/1200x500/eff6ff/1e3a8a?text=Células+de+Produção+Lean" alt="Lean na Malwee" class="w-full rounded-2xl shadow-xl mb-12 object-cover">
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fa-solid fa-arrows-turn-right text-malwee-500 mr-2"></i> Fluxo Contínuo</h3>
+                    <p class="text-gray-600">Observaremos como a fábrica integra os processos desde o fio até a peça pronta, minimizando estoques intermediários (WIP).</p>
+                </div>
+                <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fa-solid fa-users-viewfinder text-malwee-500 mr-2"></i> Layout Celular</h3>
+                    <p class="text-gray-600">A costura é organizada em células modulares, permitindo flexibilidade para trocar de produto rapidamente com base na demanda.</p>
+                </div>
+                <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3"><i class="fa-solid fa-arrow-trend-up text-malwee-500 mr-2"></i> Cultura Kaizen</h3>
+                    <p class="text-gray-600">A forte cultura de resolução de problemas no Gemba, onde operadores e líderes trabalham ativamente na redução de desperdícios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 5: Como é a Fábrica -->
+    <section class="py-24 bg-gray-900 text-white border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/3 space-y-6">
+                    <h2 class="text-4xl font-bold text-white mb-4">A Estrutura Física</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Uma das poucas operações têxteis altamente verticalizadas do país. O parque fabril integra diversas etapas sob o mesmo teto, garantindo controle total da qualidade.
+                    </p>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        O complexo inclui ainda o emblemático <strong>Parque Malwee</strong>, uma área verde de 1,5 milhão de metros quadrados que demonstra o compromisso socioambiental na prática.
+                    </p>
+                </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-blue-100 col-span-2">
+                            <span class="block text-2xl font-bold text-gray-900 mb-2">Marcas Fortes</span>
+                            <span class="text-gray-600">Dona das marcas Malwee, Enfim, Carinhoso e agora detentora de participação relevante na Reserva, consolidando sua presença no mercado casual premium.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <a href="https://grupomalwee.com.br/" target="_blank" class="inline-flex items-center text-malwee-600 font-semibold hover:text-malwee-800 transition-colors group">
+                            Visitar Site Oficial do Grupo Malwee <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vídeo Placeholder -->
+    <section id="video" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Palavras da Equipe Malwee</h2>
+            <p class="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
+                Assista ao trecho da nossa reunião de alinhamento, onde os anfitriões comentam sobre a nossa visita, as áreas que vamos conhecer e o entusiasmo em receber o GLean.
+            </p>
+            
+            <!-- Video Container -->
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-gray-900 aspect-video group cursor-pointer border border-gray-200">
+                <!-- Fallback/Placeholder Image (Can be replaced with actual iframe later) -->
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Video Thumbnail" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-300">
+                
+                <!-- Play Button Overlay -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <div class="w-20 h-20 bg-malwee-600 rounded-full flex items-center justify-center text-white text-3xl shadow-lg shadow-malwee-600/50 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-play ml-1"></i>
+                    </div>
+                    <p class="text-white mt-4 font-medium text-lg tracking-wide drop-shadow-md">Clique para reproduzir o vídeo</p>
+                </div>
+
+                <!-- Note for dev: Replace the above with an iframe like below when ready -->
+                <!-- <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/SUA_URL_AQUI" title="Alinhamento Malwee" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cronograma e Logística -->
+    <section id="cronograma" class="py-20 bg-ufsc-blue text-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-malwee-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-malwee-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Logística e Cronograma</h2>
+                <p class="text-blue-200 text-lg">Quarta-feira, 22 de Maio - Florianópolis <i class="fa-solid fa-arrow-right mx-2 text-malwee-400"></i> Jaraguá do Sul</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Info Carros -->
+                <div class="lg:col-span-4 flex flex-col gap-6">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center text-xl mb-4 border border-white/30">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Transporte</h3>
+                        <p class="text-blue-100 mb-6">Iremos em esquema de carona solidária para otimizar custos e garantir a integração da equipe.</p>
+                        
+                        <div class="flex items-center justify-between p-4 bg-black/20 rounded-xl border border-white/10 mb-3">
+                            <span class="text-blue-50 font-medium">Total de Veículos</span>
+                            <span class="text-2xl font-bold text-malwee-400">3</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-black/20 rounded-xl border border-white/10">
+                            <span class="text-blue-50 font-medium">Pessoas por Carro</span>
+                            <span class="text-2xl font-bold text-malwee-400">4</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-malwee-700 to-malwee-900 rounded-2xl p-8 border border-malwee-500/30">
+                        <h3 class="text-lg font-bold text-white mb-2"><i class="fa-solid fa-location-dot mr-2 text-malwee-300"></i>Ponto de Encontro</h3>
+                        <p class="text-blue-50 text-sm leading-relaxed">
+                            A concentração será na UFSC (ponto exato a confirmar no grupo do WhatsApp). Por favor, cheguem com 15 minutos de antecedência.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="lg:col-span-8">
+                    <div class="relative border-l-2 border-white/20 ml-4 md:ml-6 space-y-10">
+                        
+                        <!-- Item 1 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute w-6 h-6 bg-malwee-500 rounded-full -left-[13px] top-1 border-4 border-ufsc-blue shadow-sm"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-1">
+                                <h4 class="text-xl font-bold text-white">08h30</h4>
+                                <span class="hidden sm:block text-blue-300 mx-3">—</span>
+                                <span class="text-lg font-semibold text-malwee-300">Saída da UFSC</span>
+                            </div>
+                            <p class="text-blue-100 mt-2">Partida de Florianópolis em direção a Jaraguá do Sul. Viagem de aproximadamente 3h a 3h30 dependendo do trânsito na BR-101.</p>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute w-6 h-6 bg-blue-400 rounded-full -left-[13px] top-1 border-4 border-ufsc-blue"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-1">
+                                <h4 class="text-xl font-bold text-white">~12h00</h4>
+                                <span class="hidden sm:block text-blue-300 mx-3">—</span>
+                                <span class="text-lg font-semibold text-blue-200">Chegada & Almoço</span>
+                            </div>
+                            <p class="text-blue-100 mt-2">Chegada prevista em Jaraguá do Sul. Parada para almoço no restaurante próximo ao complexo da fábrica e do parque.</p>
+                            
+                            <div class="mt-4 bg-white/5 p-2 rounded-xl border border-white/10 shadow-inner">
+                                <iframe width="100%" height="200" style="border:0; border-radius: 0.5rem;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Restaurante+Armazem+Parque+Malwee+Jaragu%C3%A1+do+Sul&t=&z=14&ie=UTF8&iwloc=&output=embed" title="Mapa do Restaurante em Jaraguá do Sul"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute w-8 h-8 bg-malwee-500 rounded-full -left-[17px] -top-0 border-4 border-ufsc-blue flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                                <i class="fa-solid fa-star text-[10px] text-white"></i>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-1">
+                                <h4 class="text-2xl font-bold text-white">13h00</h4>
+                                <span class="hidden sm:block text-blue-300 mx-3">—</span>
+                                <span class="text-xl font-bold text-malwee-300">Início da Visita Técnica</span>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 mt-3 border border-white/20">
+                                <ul class="space-y-2 text-blue-50">
+                                    <li><i class="fa-solid fa-check text-malwee-400 mr-2"></i> Recepção e introdução institucional</li>
+                                    <li><i class="fa-solid fa-check text-malwee-400 mr-2"></i> Tour pelo chão de fábrica (acompanhamento de fluxos)</li>
+                                    <li><i class="fa-solid fa-check text-malwee-400 mr-2"></i> Discussão sobre práticas Lean e Sustentabilidade</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute w-6 h-6 bg-blue-400 rounded-full -left-[13px] top-1 border-4 border-ufsc-blue"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-1">
+                                <h4 class="text-xl font-bold text-white">15h30 - 16h00</h4>
+                                <span class="hidden sm:block text-blue-300 mx-3">—</span>
+                                <span class="text-lg font-semibold text-blue-200">Encerramento & Retorno</span>
+                            </div>
+                            <p class="text-blue-100 mt-2">Sessão final de Q&A (perguntas e respostas), foto oficial do grupo e início da viagem de volta para Florianópolis.</p>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute w-6 h-6 bg-white rounded-full -left-[13px] top-1 border-4 border-ufsc-blue"></div>
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-1">
+                                <h4 class="text-xl font-bold text-white">~18h00</h4>
+                                <span class="hidden sm:block text-blue-300 mx-3">—</span>
+                                <span class="text-lg font-semibold text-white">Chegada na UFSC</span>
+                            </div>
+                            <p class="text-blue-100 mt-2">Horário estimado de chegada no campus da UFSC (sujeito a variações de trânsito na BR-101 no fim do dia).</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-blue-50/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Dúvidas Frequentes</h2>
+                <p class="text-gray-600 text-lg">Prepare-se para a visita com as respostas abaixo.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-gray-900 text-lg">Qual é o vestuário obrigatório?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white opacity-0">
+                        <p class="text-gray-600 pb-5 pt-2">
+                            Por se tratar de um ambiente industrial, é <strong>obrigatório</strong> o uso de calçados fechados (tênis ou sapato sem salto), calça comprida e blusa/camiseta com mangas. Evite roupas soltas demais que possam enroscar em máquinas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-gray-900 text-lg">Os custos de almoço e pedágio estão inclusos?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white opacity-0">
+                        <p class="text-gray-600 pb-5 pt-2">
+                            Não. Cada membro é responsável pelo seu almoço. O rateio do combustível e pedágios da viagem será feito internamente por cada carro (aproximadamente 4 pessoas dividindo os custos do trajeto Floripa - Jaraguá do Sul).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-gray-900 text-lg">Posso tirar fotos lá dentro?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white opacity-0">
+                        <p class="text-gray-600 pb-5 pt-2">
+                            Geralmente, fotos são restritas no chão de fábrica por questões de propriedade intelectual de processos e produtos não lançados. Nossos guias da Malwee indicarão os locais específicos onde fotos são permitidas (como recepção e parque). Sempre pergunte antes de fotografar!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden faq-item">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-semibold text-gray-900 text-lg">O que eu devo levar?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300 transform"></i>
+                    </button>
+                    <div class="px-6 py-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white opacity-0">
+                        <p class="text-gray-600 pb-5 pt-2">
+                            Leve um documento de identificação original com foto (RG/CNH) para a portaria. Recomenda-se também levar um caderninho de anotações (muitos insights de Lean vão surgir!), uma garrafinha de água para a viagem e um lanche rápido se desejar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ufsc-blue border-t border-blue-900 text-white py-10 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="text-xl font-bold text-ufsc-blue bg-white px-2 py-1 rounded">G<span class="text-malwee-600">Lean</span></span>
+                <span class="text-blue-300">x</span>
+                <span class="text-xl font-bold text-white">Malwee</span>
+            </div>
+            <p class="text-blue-200 text-sm">
+                Universidade Federal de Santa Catarina (UFSC) • Grupo de Estudos em Lean
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Função para abrir/fechar o FAQ Accordion
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            // Toggle do ícone
+            icon.classList.toggle('rotate-180');
+            
+            // Animação de abrir/fechar a altura
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('opacity-100');
+                content.classList.add('opacity-0');
+            } else {
+                // Fecha os outros (opcional, manter apenas 1 aberto)
+                document.querySelectorAll('.faq-item > div').forEach(div => {
+                    if(div !== content && div.style.maxHeight) {
+                        div.style.maxHeight = null;
+                        div.classList.remove('opacity-100');
+                        div.classList.add('opacity-0');
+                        div.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.remove('opacity-0');
+                content.classList.add('opacity-100');
+            }
+        }
+
+        // Highlight do menu ao rolar a página
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+
+        // Lógica do Scroll Horizontal da Seção História
+        const wrapper = document.getElementById('historia-wrapper');
+        const container = document.getElementById('historia-container');
+
+        function updateHorizontalScroll() {
+            if (!wrapper || !container) return;
+            
+            // Pega as dimensões da janela e do wrapper
+            const rect = wrapper.getBoundingClientRect();
+            const wrapperTop = rect.top; // Posição do topo do wrapper em relação à viewport
+            const wrapperHeight = rect.height; // Altura total definida no CSS (ex: 400vh)
+            const windowHeight = window.innerHeight;
+            
+            // O espaço "scrollável" é a altura total do wrapper menos a altura da tela (onde ele fica sticky)
+            const scrollableSpace = wrapperHeight - windowHeight;
+            
+            // Verifica se o wrapper está na área de scroll
+            if (wrapperTop <= 0 && -wrapperTop <= scrollableSpace) {
+                // Calcula o progresso do scroll de 0 a 1
+                const progress = -wrapperTop / scrollableSpace;
+                
+                // Calcula a distância máxima que o container flex pode se mover para a esquerda
+                // (Largura total do conteúdo - largura da tela)
+                const maxScrollX = container.scrollWidth - window.innerWidth;
+                
+                // Aplica a translação no eixo X
+                container.style.transform = `translateX(-${progress * maxScrollX}px)`;
+            } else if (wrapperTop > 0) {
+                // Antes do wrapper chegar no topo, reseta a posição
+                container.style.transform = `translateX(0px)`;
+            } else if (-wrapperTop > scrollableSpace) {
+                // Se passou do wrapper, trava na posição final para não bugar
+                const maxScrollX = container.scrollWidth - window.innerWidth;
+                container.style.transform = `translateX(-${maxScrollX}px)`;
+            }
+        }
+
+        // Adiciona os listeners para recalcular durante o scroll e redimensionamento da janela
+        window.addEventListener('scroll', updateHorizontalScroll);
+        window.addEventListener('resize', updateHorizontalScroll);
+        
+        // Chamada inicial para garantir posição correta caso a página carregue já "scrollada"
+        updateHorizontalScroll();
+    </script>
+</body>
+</html>
